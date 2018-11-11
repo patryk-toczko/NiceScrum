@@ -1,0 +1,51 @@
+.mainContent {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    align-content  : center;
+    flex-wrap      : wrap;
+    padding        : 70px 0;
+    margin-left    : 120px;
+}
+
+form {
+    width   : 550px;
+    height  : 600px;
+    margin  : auto;
+    position: relative;
+    color   : black;
+}
+
+a.item{
+    border-bottom: 1px solid rgb(65, 65, 65);
+    margin       : 10px 0;
+}
+
+.niceLogo {
+    display     : block;
+    margin-left : auto;
+    margin-right: auto;
+    width       : 50%;
+}
+
+.ui.list>.item .description {
+    color: whitesmoke;
+}
+
+hr.style {
+    overflow  : visible;             /* For IE */
+    padding   : 0;
+    border    : none;
+    border-top: medium double #fff;
+    color     : #fff;
+    text-align: center;
+}
+hr.style:after {
+    content   : "§";
+    display   : inline-block;
+    position  : relative;
+    top       : -0.7em;
+    font-size : 1.5em;
+    padding   : 0 0.25em;
+    background: #2c2f33;
+}

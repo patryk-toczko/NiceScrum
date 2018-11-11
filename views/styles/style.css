@@ -1,0 +1,14 @@
+body {
+	background-color: #2c2f33;
+	color: #FFFFFF;
+}
+
+.sidebar {
+	background-color: #23272a;
+}
+
+
+.ui.visible.left.sidebar~.fixed, .ui.visible.left.sidebar~.pusher {
+    -webkit-transform: translate3d(120px,0,0);
+    transform: translate3d(120px,0,0);
+}

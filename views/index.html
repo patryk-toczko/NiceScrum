@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>NiceScrum</title>
+  <link rel="stylesheet" type="text/css" href="../semantic/dist/semantic.min.css">
+  <script>
+    const jQuery = require('jquery')
+    const $ = jQuery
+  </script>
+  <script src="../semantic/dist/semantic.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link rel="stylesheet" type="text/css" href="styles/index.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="ui left demo vertical inverted sidebar labeled icon menu visible">
+    <div class="tabular menu">
+      <a class="item homeItem" data-tab="first">
+        <i class="home icon"></i>
+        Home
+      </a>
+
+      <a class="item projectItem" data-tab="second">
+        <i class="archive icon"></i>
+        Projects
+      </a>
+
+      <a class="item newItem" data-tab="third">
+        <i class="edit icon"></i>
+        New Project
+      </a>
+
+      <a class="item newItem" data-tab="forth">
+        <i class="user icon"></i>
+        Account Settings
+      </a>
+    </div>
+  </div>
+
+
+  <!-- content !-->
+  <div class="mainContent">
+    <!-- Main Tab -->
+    <div class="ui tab active" data-tab="first">
+      <img class="niceLogo" src="./images/nicelogo.png" alt="Nice logo">
+      <h2 align="center">Welcome to NiceScrum,
+        <span id="username"></span>
+      </h2>
+      <h4 align="center">
+        NiceScrum is a case management tool for professionals 
+        employing agile and scrum methodoligies. 
+      </h4>
+
+      <br>
+      <h4>You currently have <span id="numProjects">0</span> active projects</h4>
+    </div>
+
+    <!-- Display Current Projects Tab -->
+    <div align="center" class="ui tab" data-tab="second">
+      <h1>Here are your currently active projects:</h1>
+      <hr class="style">
+      <div id="projectList" class="ui list">
+      </div>
+    </div>
+
+    <!-- Display create new project form -->
+    <div class="ui tab" data-tab="third">
+      <form id="newProjectForm" class="ui form segment">
+        <h3>Enter project details here</h3>
+
+        <div class="field">
+          <label>Project name</label>
+          <input id="projectNameInput" placeholder="Project name" name="name" type="text">
+        </div>
+        <div class="field">
+          <label>Description</label>
+          <textarea name="description" id="projectDescriptionInput" cols="30" rows="3" placeholder="Add description here"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Team members</label>
+          <select id="memberSelect" name="members" multiple="" class="ui search dropdown">
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Team Leader</label>
+          <select id="teamLeader" name="teamLeader" class="ui search dropdown">
+            <option disabled selected value> -- select a team leader -- </option>
+          </select>
+        </div>
+
+        <div id="newProjectSubmit" class="ui primary button">Submit</div>
+        <div id="newProjectValidation"></div>
+      </form>
+    </div>
+
+    <div class="ui tab" data-tab="forth">
+
+        <div class="ui grid">
+            <div class='ui card'>
+              <img id="accountImage" src='https://i.pinimg.com/236x/0d/36/e7/0d36e7a476b06333d9fe9960572b66b9--profile-pictures-doe.jpg' class='ui image' />
+              <div class='content'>
+                <div id='accountName' class='header'>Name</div>
+                <div class='meta'>
+                  <span class='date'>Joined in 2018</span>
+                </div>
+                <div id="accountUser" class='description'>Username: </div>
+              </div>
+            </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <script src="./scripts/mainScript.js"></script>
+</body>
+
+</html>
