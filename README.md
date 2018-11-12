@@ -17,7 +17,7 @@ A step by step series of examples that tell you how to get a development env run
 First let NPM install the neccessary dependencies.
 
 ```
-Type: npm install
+npm install
 ```
 
 The install the front end framework
