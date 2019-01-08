@@ -11,6 +11,7 @@
   <script src="../semantic/dist/semantic.min.js"></script>
   <link rel="stylesheet" type="text/css" href="styles/style.css">
   <link rel="stylesheet" type="text/css" href="styles/index.css">
+  <link href="https://fonts.googleapis.com/css?family=Hind|Lora" rel="stylesheet">
 </head>
 
 <body>
@@ -51,7 +52,7 @@
       </h2>
       <h4 align="center">
         NiceScrum is a case management tool for professionals 
-        employing agile and scrum methodoligies. 
+        employing agile and scrum methodologies. 
       </h4>
 
       <br>
@@ -60,7 +61,7 @@
 
     <!-- Display Current Projects Tab -->
     <div align="center" class="ui tab" data-tab="second">
-      <h1>Here are your currently active projects:</h1>
+      <h1>Active Projects:</h1>
       <hr class="style">
       <div id="projectList" class="ui list">
       </div>
@@ -97,22 +98,63 @@
         <div id="newProjectValidation"></div>
       </form>
     </div>
-
+    <!--  -->
     <div class="ui tab" data-tab="forth">
 
-        <div class="ui grid">
-            <div class='ui card'>
-              <img id="accountImage" src='https://i.pinimg.com/236x/0d/36/e7/0d36e7a476b06333d9fe9960572b66b9--profile-pictures-doe.jpg' class='ui image' />
-              <div class='content'>
-                <div id='accountName' class='header'>Name</div>
-                <div class='meta'>
-                  <span class='date'>Joined in 2018</span>
-                </div>
-                <div id="accountUser" class='description'>Username: </div>
-              </div>
+      <div class="ui grid">
+        <div class='ui card'>
+          <img id="accountImage" src='https://i.pinimg.com/236x/0d/36/e7/0d36e7a476b06333d9fe9960572b66b9--profile-pictures-doe.jpg' class='ui image' />
+          <div class='content'>
+            <div id='accountName' class='header'>Name</div>
+            <div class='meta'>
+              <span class='date'>Joined in 2018</span>
             </div>
-
-
+            <div class='description'>Username: <span id="accountUser"></span></div>
+          </div>
+          <button class="ui button yellow" type="button" id="modalBtn">
+            Edit Profile
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="ui small modal">
+      <i class="close icon"></i>
+      <div class="ui container addMargin">
+          <form class="ui form" id="regForm">
+            <div class="field">
+              <label>Name</label>
+              <input id="regName" type="text" name="name" placeholder="Name" required>
+            </div>
+            <div class="field">
+              <label>Email</label>
+              <input id="regEmail" type="text" name="email" placeholder="Email" required>
+            </div>
+            <div class="field">
+              <label>Username</label>
+              <input id="regUserName" type="text" name="username" placeholder="Username" disabled>
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <input id="regPassword" type="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="field">
+              <label>Image</label>
+              <input id="imageURL" type="text" name="name" placeholder="URL" required>
+            </div>
+            
+            <div class="actions">
+              <div class="ui black deny button">
+              Cancel
+            </div>
+              <div id="acceptChange" class="ui positive right labeled icon button">
+              Accept
+              <i class="checkmark icon"></i>
+            </div>
+            </div>
+            
+          </div>
+        </form>
+        </div>
       </div>
     </div>
   </div>

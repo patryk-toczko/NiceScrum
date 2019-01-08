@@ -5,9 +5,9 @@ var projectSchema = mongoose.Schema({
     description: String,
     icon       : {type: String, default: 'https://image.flaticon.com/icons/svg/432/432435.svg'},
     dateAdded  : {type: Date, default: Date.now },
-    stories    : [{
+    tasks      : [{
         type: mongoose.Schema.Types.ObjectId,
-        ref : "Story"
+        ref : "Task"
     }],
     members: Array
 });

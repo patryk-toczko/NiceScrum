@@ -9,12 +9,183 @@
         const $ = jQuery
     </script>
     <script src="../semantic/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Hind|Lora" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/project.css">
+    
 </head>
 <body>
-    <h2>Project Page</h2>
-    <p id='name'></p>
+    <div class="ui inverted segment">
+        <div class="ui inverted secondary menu">
+          <a class="item" data-tab="first">
+            Main
+          </a>
+          <a class="item" data-tab="second">
+            Sandbox
+          </a>
+          <a class="item" data-tab="third">
+            Task View
+          </a>
+        </div>
+    </div>
 
+    <div class="content">
+        <!-- Main Tab -->
+        <div class="ui tab active" data-tab="first">
+            <div class="ui grid">
+                <div class="sixteen wide column">
+                    <h1 id="projectName" class="header">Header</h1>
+
+                </div>
+                <div class="three wide column">
+                    <h2>Team Members:</h2>
+                    <div id="projectMembers" class="ui list">
+                    </div>
+                    <button id="editProjectBtn" class="circular ui icon button">
+                        <i class="icon settings"></i>
+                    </button>
+                    Edit Project
+                </div>
+                <div class="nine wide column">
+                        <h2>Project Description:</h2>
+                        <p id="projectDescription">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                </div>
+            </div>
+        </div>
+    
+    <!-- Sandbox Tab -->
+    <div class="ui tab" data-tab="second">
+        <h1>Sandbox</h1>
+        <div class="ui grid">
+            <div class="three wide column taskbox">
+                <h3>Pending</h3>
+                <ul id="sortable1" class="connectedSortable">
+                    
+                </ul>
+            </div>
+            <div class="three wide column taskbox">
+                <h3>In progress</h3>
+                <ul id="sortable2" class="connectedSortable">
+                            
+                </ul>
+            </div>
+            <div class="three wide column taskbox">
+                <h3>Complete</h3>
+                <ul id="sortable3" class="connectedSortable">
+                            
+                </ul>
+            </div>
+            <div class="three wide column taskbox">
+                <h3>Accepted</h3>
+                <ul id="sortable4" class="connectedSortable">
+                            
+                </ul>
+            </div>
+            <div class="three wide column taskbox">
+                <h3>Add a task</h3>
+                <form id="taskForm" class="ui form">
+                    <div class="field">
+                        <label id="todoLabel">Task</label>
+                        <input id="taskField" type="text" name="task" placeholder="task" required>
+                    </div>
+                    <div class="field">
+                        <label id="todoLabel">Description</label>
+                        <input id="descriptionField" type="text" name="task" placeholder="description" required>
+                    </div>
+                    <div class="field">
+                        <label id="todoLabel">List</label>
+                        <select id="typeField" class="ui dropdown">
+                            <option value="0">Pending</option>
+                            <option value="1">In progress</option>
+                            <option value="2">Complete</option>
+                            <option value="3">Accepted</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label id="todoLabel">List</label>
+                        <select id="specialField" class="ui dropdown">
+
+                        </select>
+                    </div>
+                </form>
+                <button id="taskAccept" class="ui button" type="button">Accept</button>
+            </div>
+            <div id="trash" class="three wide column">
+                <h3>Drag here to delete</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tree plan tab -->
+    <div class="ui tab" data-tab="third">
+        <div class="ui grid">
+            <div class="sixteen wide column">
+            <h1 class="header">Project Task View</h1>
+            </div>
+            <div class="four wide column">
+                <h3>Unassigned</h3>
+            </div>
+            <div class="four wide column">
+                <h3>Sprint 1</h3>
+            </div>
+            <div class="four wide column">
+                <h3>Sprint 2</h3>
+            </div>
+            <div class="four wide column">
+                <h3>Sprint 3</h3>
+            </div>
+            
+            <div id="pending" class="four wide column pillar">
+                <h3>Unassigned</h3>
+            </div>
+            <div id="sprint1" class="four wide column pillar">
+                <h3>Sprint 1</h3>
+            </div>
+            <div id="sprint2" class="four wide column pillar">
+                <h3>Sprint 2</h3>
+            </div>
+            <div id="sprint3" class="four wide column pillar">
+                <h3>Sprint 3</h3>
+            </div>
+        </div>
+        
+    </div>
+
+  </div>
+
+  <div class="ui small modal">
+    <i class="close icon"></i>
+    <div class="ui container addMargin">
+        <form class="ui form" id="editProjectForm">
+            <div class="field">
+                <label>Project name</label>
+                <input id="projName" type="text" name="projName" placeholder="Project name">
+            </div>
+            <div class="field">
+                <label>Project Icon</label>
+                <input id="projIcon" type="text" name="projIcon" placeholder="Project Icon">
+            </div>
+            <div class="field">
+                <label>Project description</label>
+                <textarea id="projDesc" name="description" placeholder="Description..."></textarea>
+            </div>
+            <div class="actions">
+                <div class="ui black deny button">
+                    Cancel
+                </div>
+                <div id="acceptChange" class="ui positive right labeled icon button">
+                    Accept
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="./scripts/projectScript.js"></script>
 </body>
 </html>

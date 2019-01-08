@@ -1,6 +1,7 @@
 body {
 	background-color: #2c2f33;
-	color: #FFFFFF;
+	color           : #FFFFFF;
+	font-family     : 'Hind', sans-serif;
 }
 
 .sidebar {
@@ -10,5 +11,9 @@ body {
 
 .ui.visible.left.sidebar~.fixed, .ui.visible.left.sidebar~.pusher {
     -webkit-transform: translate3d(120px,0,0);
-    transform: translate3d(120px,0,0);
+    transform        : translate3d(120px,0,0);
 }
+
+
+
+

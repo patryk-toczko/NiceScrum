@@ -4,6 +4,7 @@ var mongoose = require("mongoose"),
     User     = require("./models/user.js"),
     Project  = require("./models/project.js"),
     Story    = require("./models/story.js"),
+    Task     = require("./models/task.js"),
     seedDB   = require("./seeds");
 
 // Make connection to the database server
@@ -23,7 +24,7 @@ process.on('SIGINT', function() {
 
 // Enable live reload for Electron
 //require('electron-reload')(__dirname, {
-//   // Note that the path to electron may vary according to the main file
+   // Note that the path to electron may vary according to the main file
   //electron: require(`${__dirname}/node_modules/electron`)
 //});
 

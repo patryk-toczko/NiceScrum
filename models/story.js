@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var storySchema = mongoose.Schema({
     name       : String,
     description: String,
-    completed  : Boolean
+    assignedTo : String
 });
 
 module.exports = mongoose.model("Story", storySchema);

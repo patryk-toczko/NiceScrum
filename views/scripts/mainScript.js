@@ -1,8 +1,9 @@
 let ipc = require("electron").ipcRenderer,
   //$  = require('jquery'),
-  User     = require("../models/user.js"),
-  Project  = require("../models/project.js")
-  mongoose = require("mongoose");
+  User       = require("../models/user.js"),
+  Project    = require("../models/project.js"),
+  mongoose   = require("mongoose"),
+  globalUser = null;
 
 mongoose.connect(
   "mongodb+srv://patog:1234@nicescrum-gkx1k.mongodb.net/test",
@@ -17,6 +18,10 @@ ipc.on("user-logged-in", (event, user) => {
   accountProjectsRender(user);
   // Populate the new project members dropdown menu
   populateDropdown();
+  //populate modal for editing user info
+  populateModal(user);
+
+  globalUser = user;
 });
 
 // Allow for tabbing of main page to function
@@ -25,6 +30,15 @@ $(".menu .item").tab();
 //Allow for dropdown menus to work
 $(".ui.dropdown").dropdown();
 
+//allow for modal to work
+$(function(){
+	$("#modalBtn").click(function(){
+		$(".ui.modal").modal('show');
+	});
+	$(".ui.modal").modal({
+		closable: true
+	});
+});
 
 // Handle creating a new project
 $("#newProjectSubmit").on("click", () => {
@@ -32,12 +46,15 @@ $("#newProjectSubmit").on("click", () => {
   var projectDescription = $('#projectDescriptionInput').val();
   var members            = $("#memberSelect").val();
 
-
   if(projectName.length===0 || projectDescription.length===0 || members.length===0){
     console.log("Fields are empty");
     $('#newProjectValidation').text('Make sure all fields are filled out');
   } else {
-    var newProject = {name: projectName, description: projectDescription, members: members};
+    var newProject = {
+      name       : projectName,
+      description: projectDescription,
+      members    : members,
+    };
 
     Project.create(newProject, function(err, project){
       if(err){
@@ -72,6 +89,23 @@ $("#newProjectSubmit").on("click", () => {
   } 
 });
 
+$('#acceptChange').on('click', () => {
+  
+  User.findOne({userName: globalUser._doc.userName}, function (err, user) {
+    if (err) throw err;
+    user.set({name: $('#regName').val()});
+    user.set({email: $('#regEmail').val()});
+    user.set({password: $('#regPassword').val()});
+    user.set({image: $('#imageURL').val()});
+
+    user.save((err, updatedUser) => {
+      if (err) throw err;
+      accountSettingsRender(updatedUser);
+      populateModal(updatedUser);
+    });
+  });
+});
+
 function populateDropdown() {
   memberSelect = document.getElementById("memberSelect");
   teamLeader   = document.getElementById("teamLeader");
@@ -91,7 +125,7 @@ function populateDropdown() {
 function accountSettingsRender(user) {
   $('#accountImage').attr('src', user._doc.image);
   $('#accountName').html(user._doc.name);
-  $('#accountUser').append(user._doc.userName);
+  $('#accountUser').html(user._doc.userName);
 }
 
 function accountProjectsRender(user) {
@@ -115,14 +149,15 @@ function accountProjectsRender(user) {
   });
 }
 
+function populateModal(user){
+  $('#regName').val(user._doc.name);
+  $('#regEmail').val(user._doc.email);
+  $('#regUserName').val(user._doc.userName);
+  $('#regPassword').val(user._doc.password);
+  $('#imageURL').val(user._doc.image);
+}
+
 function projectClicked(obj){
   var id = obj.id;
-  Project.findById(id, (err, project) => {
-    if(err){
-      console.log(err);
-    } else {
-      ipc.send('get-project-page', project);
-
-    }
-  });
+  ipc.send('get-project-page', id);
 }
