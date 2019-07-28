@@ -31,16 +31,12 @@ Now in the home directory of the project type npm start to run the project
 
 ## Authors
 
-* **Patryk Toczko** 
+* **Patryk Toczko**
+* **Filip Serwinski**
+* **Ryan Trokey**
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
