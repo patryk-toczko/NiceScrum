@@ -10,7 +10,7 @@
   "license": "MIT",
   "devDependencies": {
     "ejs": "^2.6.1",
-    "electron": "^3.0.0",
+    "electron": "^15.5.5",
     "electron-reload": "^1.2.5",
     "materialize-css": "^1.0.0-rc.2"
   },
